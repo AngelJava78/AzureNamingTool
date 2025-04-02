@@ -25,11 +25,11 @@ namespace AzureNamingTool.Services
                 {
                     if (!admin)
                     {
-                        serviceResponse.ResponseObject = items.Where(x => x.Enabled == true).OrderBy(x => x.Name).ToList();
+                        serviceResponse.ResponseObject = items.Where(x => x.Enabled == true).OrderByDescending(x => x.Enabled).ThenBy(x => x.Name).ToList();
                     }
                     else
                     {
-                        serviceResponse.ResponseObject = items.OrderBy(x => x.Name).ToList();
+                        serviceResponse.ResponseObject = items.OrderByDescending(x => x.Enabled).ThenBy(x => x.Name).ToList();
                     }
                     serviceResponse.Success = true;
                 }
